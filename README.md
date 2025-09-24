@@ -40,8 +40,8 @@ A comprehensive collection of Python tutorials covering fundamental concepts fro
 ### Running the Tutorials
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/python-tutorial-series.git
-   cd python-tutorial-series
+   git clone https://github.com/sabbirOG/python-tutorial-notes.git
+   cd python-tutorial-notes
    ```
 
 2. Run any tutorial file:
