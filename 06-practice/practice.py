@@ -130,10 +130,121 @@ print("\n" + "=" * 60)
 print("🔴 ADVANCED LEVEL EXERCISES")
 print("=" * 60)
 
-print("\n7. FUNCTIONS")
+print("\n7. FUNCTIONS - BASIC CONCEPTS")
 print("-" * 30)
 
-# Exercise 7: Advanced Functions
+# Exercise 7a: Basic Function Definition and Calling
+def greet(name):
+    """A simple function that greets a person"""
+    return f"Hello, {name}! Welcome to Python!"
+
+def add_numbers(a, b):
+    """Function that adds two numbers"""
+    return a + b
+
+def multiply(x, y):
+    """Function that multiplies two numbers"""
+    result = x * y
+    return result
+
+# Test basic functions
+print("Basic Function Tests:")
+print(greet("Alice"))
+print(f"5 + 3 = {add_numbers(5, 3)}")
+print(f"4 × 7 = {multiply(4, 7)}")
+
+# Exercise 7b: Functions with Default Parameters
+def greet_with_title(name, title="Mr./Ms."):
+    """Function with default parameter"""
+    return f"Hello, {title} {name}!"
+
+def create_profile(name, age=18, city="Unknown"):
+    """Function with multiple default parameters"""
+    return f"Name: {name}, Age: {age}, City: {city}"
+
+print("\nFunctions with Default Parameters:")
+print(greet_with_title("John"))
+print(greet_with_title("Jane", "Dr."))
+print(create_profile("Bob"))
+print(create_profile("Alice", 25))
+print(create_profile("Charlie", 30, "New York"))
+
+# Exercise 7c: Functions with Multiple Return Values
+def get_name_parts(full_name):
+    """Function that returns multiple values"""
+    parts = full_name.split()
+    first_name = parts[0] if parts else ""
+    last_name = parts[-1] if len(parts) > 1 else ""
+    middle_names = " ".join(parts[1:-1]) if len(parts) > 2 else ""
+    return first_name, middle_names, last_name
+
+def calculate_stats(numbers):
+    """Function that returns multiple statistics"""
+    if not numbers:
+        return 0, 0, 0, 0
+    
+    total = sum(numbers)
+    count = len(numbers)
+    average = total / count
+    maximum = max(numbers)
+    minimum = min(numbers)
+    
+    return total, average, maximum, minimum
+
+print("\nFunctions with Multiple Return Values:")
+first, middle, last = get_name_parts("John Michael Smith")
+print(f"First: {first}, Middle: {middle}, Last: {last}")
+
+stats = calculate_stats([10, 20, 30, 40, 50])
+print(f"Numbers: [10, 20, 30, 40, 50]")
+print(f"Total: {stats[0]}, Average: {stats[1]}, Max: {stats[2]}, Min: {stats[3]}")
+
+# Exercise 7d: Functions with Variable Arguments
+def sum_all(*numbers):
+    """Function that accepts variable number of arguments"""
+    return sum(numbers)
+
+def create_sentence(*words):
+    """Function that joins variable number of words"""
+    return " ".join(words)
+
+def print_info(**kwargs):
+    """Function that accepts keyword arguments"""
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print("\nFunctions with Variable Arguments:")
+print(f"Sum of 1,2,3,4,5: {sum_all(1, 2, 3, 4, 5)}")
+print(f"Sum of 10,20: {sum_all(10, 20)}")
+print(f"Sentence: {create_sentence('Hello', 'world', 'from', 'Python')}")
+
+print("\nKeyword Arguments:")
+print_info(name="Alice", age=25, city="Boston", occupation="Developer")
+
+# Exercise 7e: Lambda Functions (Anonymous Functions)
+square = lambda x: x ** 2
+add = lambda a, b: a + b
+is_even = lambda n: n % 2 == 0
+
+print("\nLambda Functions:")
+print(f"Square of 5: {square(5)}")
+print(f"Add 3 and 7: {add(3, 7)}")
+print(f"Is 8 even? {is_even(8)}")
+print(f"Is 7 even? {is_even(7)}")
+
+# Using lambda with built-in functions
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squared_numbers = list(map(square, numbers))
+even_numbers = list(filter(is_even, numbers))
+
+print(f"Original numbers: {numbers}")
+print(f"Squared numbers: {squared_numbers}")
+print(f"Even numbers: {even_numbers}")
+
+print("\n8. FUNCTIONS - ADVANCED CONCEPTS")
+print("-" * 30)
+
+# Exercise 8: Advanced Functions
 def fibonacci(n):
     """Generate Fibonacci sequence up to n terms"""
     if n <= 0:
@@ -291,6 +402,131 @@ def number_guessing_game():
 
 # Uncomment to play the game
 # number_guessing_game()
+
+print("\n" + "=" * 60)
+print("🔧 FUNCTION PRACTICE EXERCISES")
+print("=" * 60)
+
+print("\nExercise 1: Temperature Converter")
+def celsius_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit"""
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    """Convert Fahrenheit to Celsius"""
+    return (fahrenheit - 32) * 5/9
+
+print("Temperature Conversions:")
+print(f"25°C = {celsius_to_fahrenheit(25):.1f}°F")
+print(f"77°F = {fahrenheit_to_celsius(77):.1f}°C")
+
+print("\nExercise 2: String Manipulation Functions")
+def count_vowels(text):
+    """Count vowels in a string"""
+    vowels = "aeiouAEIOU"
+    return sum(1 for char in text if char in vowels)
+
+def reverse_string(text):
+    """Reverse a string"""
+    return text[::-1]
+
+def capitalize_words(text):
+    """Capitalize first letter of each word"""
+    return " ".join(word.capitalize() for word in text.split())
+
+sample_text = "hello world python programming"
+print(f"Original: '{sample_text}'")
+print(f"Vowel count: {count_vowels(sample_text)}")
+print(f"Reversed: '{reverse_string(sample_text)}'")
+print(f"Capitalized: '{capitalize_words(sample_text)}'")
+
+print("\nExercise 3: List Processing Functions")
+def find_max_min(lst):
+    """Find maximum and minimum in a list"""
+    if not lst:
+        return None, None
+    return max(lst), min(lst)
+
+def remove_duplicates(lst):
+    """Remove duplicates while preserving order"""
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+def merge_lists(list1, list2):
+    """Merge two lists and sort them"""
+    merged = list1 + list2
+    return sorted(merged)
+
+test_list = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+list1 = [1, 3, 5]
+list2 = [2, 4, 6]
+
+print(f"Test list: {test_list}")
+max_val, min_val = find_max_min(test_list)
+print(f"Max: {max_val}, Min: {min_val}")
+print(f"Without duplicates: {remove_duplicates(test_list)}")
+print(f"Merged and sorted: {merge_lists(list1, list2)}")
+
+print("\nExercise 4: Mathematical Functions")
+def factorial(n):
+    """Calculate factorial of a number"""
+    if n < 0:
+        return "Factorial not defined for negative numbers"
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+def is_perfect_square(n):
+    """Check if a number is a perfect square"""
+    if n < 0:
+        return False
+    root = int(n ** 0.5)
+    return root * root == n
+
+def gcd(a, b):
+    """Find Greatest Common Divisor using Euclidean algorithm"""
+    while b:
+        a, b = b, a % b
+    return a
+
+print("Mathematical Functions:")
+print(f"Factorial of 5: {factorial(5)}")
+print(f"Is 16 a perfect square? {is_perfect_square(16)}")
+print(f"Is 15 a perfect square? {is_perfect_square(15)}")
+print(f"GCD of 48 and 18: {gcd(48, 18)}")
+
+print("\nExercise 5: Function Composition and Higher-Order Functions")
+def apply_operation(numbers, operation):
+    """Apply an operation to a list of numbers"""
+    return [operation(num) for num in numbers]
+
+def create_multiplier(factor):
+    """Create a function that multiplies by a factor"""
+    def multiplier(x):
+        return x * factor
+    return multiplier
+
+# Test function composition
+numbers = [1, 2, 3, 4, 5]
+doubled = apply_operation(numbers, lambda x: x * 2)
+squared = apply_operation(numbers, lambda x: x ** 2)
+
+print(f"Original: {numbers}")
+print(f"Doubled: {doubled}")
+print(f"Squared: {squared}")
+
+# Test higher-order function
+multiply_by_3 = create_multiplier(3)
+print(f"Multiply by 3: {[multiply_by_3(x) for x in numbers]}")
 
 print("\n" + "=" * 60)
 print("📚 ADDITIONAL PRACTICE IDEAS")
