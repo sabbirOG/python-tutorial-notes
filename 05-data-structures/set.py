@@ -94,6 +94,56 @@ print(frozen)
 # frozen.add(4)  # ❌ Error: 'frozenset' object has no attribute 'add'
 
 
+# ======================
+# 9. Practice Problem
+# ======================
+
+"""
+PRACTICE PROBLEM: Student Course Tracker
+
+Create a program that tracks which students are enrolled in which courses.
+Use sets to efficiently manage the data and find common students between courses.
+
+Requirements:
+1. Create sets for 3 different courses: Math, Science, English
+2. Add some students to each course (some students take multiple courses)
+3. Find students who are taking ALL three courses
+4. Find students who are taking ONLY Math
+5. Find students who are taking Math OR Science (or both)
+6. Count total unique students across all courses
+"""
+
+# Solution:
+print("\n" + "="*50)
+print("STUDENT COURSE TRACKER")
+print("="*50)
+
+# Create course sets
+math_students = {"Alice", "Bob", "Charlie", "Diana"}
+science_students = {"Bob", "Charlie", "Eve", "Frank"}
+english_students = {"Alice", "Charlie", "Diana", "Grace"}
+
+print(f"Math students: {math_students}")
+print(f"Science students: {science_students}")
+print(f"English students: {english_students}")
+
+# Students taking ALL three courses
+all_three = math_students & science_students & english_students
+print(f"\nStudents taking ALL courses: {all_three}")
+
+# Students taking ONLY Math
+only_math = math_students - science_students - english_students
+print(f"Students taking ONLY Math: {only_math}")
+
+# Students taking Math OR Science (or both)
+math_or_science = math_students | science_students
+print(f"Students taking Math OR Science: {math_or_science}")
+
+# Total unique students
+all_students = math_students | science_students | english_students
+print(f"Total unique students: {len(all_students)}")
+print(f"All students: {all_students}")
+
 """Key Takeaways
 
 set is unordered, unindexed, and only stores unique elements.
